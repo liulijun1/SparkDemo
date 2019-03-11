@@ -2,8 +2,15 @@ package com.selflearning.spark
 
 import org.apache.spark.{SparkConf, SparkContext}
 
+/**
+  * first spark program
+  */
 object HelloSpark {
 
+  /**
+    *
+    * @param args set input file name and output dir name
+    */
   def main(args: Array[String]): Unit = {
     if (args.length < 2) {
       println("please set input file and output file")
