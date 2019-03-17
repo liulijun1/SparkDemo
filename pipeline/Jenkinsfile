@@ -7,10 +7,20 @@ pipeline {
         flavor='test'
     }
 
+    parameters {
+        string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
+    }
+
     stages {
         stage('get environment') {
             steps {
                 sh 'printenv'
+            }
+        }
+
+        stage('get parameter') {
+            steps {
+                echo "${params.Greeting} Spark!"
             }
         }
 
