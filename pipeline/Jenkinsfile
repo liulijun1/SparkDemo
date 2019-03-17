@@ -3,13 +3,15 @@
 pipeline {
     agent any
 
-    stages {
-        stage('init environment') {
-            environment {
-                flavor='test'
-            }
+    environment {
+        flavor='test'
+    }
 
-            sh 'printenv'
+    stages {
+        stage('get environment') {
+            steps {
+                sh 'printenv'
+            }
         }
 
         stage('Build') {
