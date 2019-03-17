@@ -43,4 +43,28 @@ pipeline {
             }
         }
     }
+
+    post {
+        always {
+            //junit '**/target/*.xml'
+            echo "build result $currentBuild.result"
+        }
+
+        failure {
+            //mail to: team@example.com, subject: 'The Pipeline failed :('
+            echo "build failure"
+        }
+
+        unstable {
+            echo "build unstable"
+        }
+
+        success {
+            echo "build success"
+        }
+
+        changed {
+            echo "changed"
+        }
+    }
 }
