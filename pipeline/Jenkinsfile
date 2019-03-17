@@ -4,6 +4,14 @@ pipeline {
     agent any
 
     stages {
+        stage('init environment') {
+            environment {
+                flavor='test'
+            }
+
+            sh 'printenv'
+        }
+
         stage('Build') {
             steps {
                 sh 'pwd'
@@ -11,6 +19,7 @@ pipeline {
                 archiveArtifacts '**/build/libs/*.jar'
             }
         }
+
         stage('Test') {
             steps {
                 echo 'Testing..'
