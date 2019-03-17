@@ -8,6 +8,7 @@ pipeline {
             steps {
                 sh 'pwd'
                 sh './gradlew clean jar'
+                archiveArtifacts '**/build/libs/*.jar'
             }
         }
         stage('Test') {
