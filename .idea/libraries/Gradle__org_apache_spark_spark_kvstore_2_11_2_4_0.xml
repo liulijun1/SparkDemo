@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.apache.spark:spark-kvstore_2.11:2.4.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.spark/spark-kvstore_2.11/2.4.0/8196f3c11fbcf62ff7633f375423a0cc252897a0/spark-kvstore_2.11-2.4.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.spark/spark-kvstore_2.11/2.4.0/9a1221a30d2b8b3bde368a5373ff32e8d681e438/spark-kvstore_2.11-2.4.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -18,7 +18,7 @@ object SparkReadAndWriteData {
 
     println("------------------save sequence-----------------")
     val saveSequenceRDD = SparkUtils.createRDD(List(("Panda",3), ("Kay", 6), ("Snail", 2)))
-    //saveSequenceRDD.saveAsSequenceFile("sequence_file")
+    saveSequenceRDD.saveAsSequenceFile("sequence_file")
 
     println("------------------read sequence-----------------")
     val readSequenceRDD = SparkUtils.readSequenceFile("./sequence_file/part-00000", classOf[Text], classOf[IntWritable]).map{
@@ -44,7 +44,14 @@ object SparkReadAndWriteData {
       case (k,v)=>print(s"(${k},${v}),")
     }
 
-    println("\n------------------read json by new HiveContext-----------------")
+    println("\n------------------read json by HiveContext-----------------")
+    val hiveContext = SparkUtils.createHiveContext()
+    val dataFrame = hiveContext.jsonFile("./tweets.json")
+    dataFrame.registerTempTable("dataFrame")
+    val selectDataFrame = hiveContext.sql("select user.name, text from dataFrame")
+    selectDataFrame.rdd.collect().foreach{
+      it=>print(s"${it},")
+    }
 
     println("\n------------------save by old hadoop api-----------------")
     oldHadoopApiRDD.map{
