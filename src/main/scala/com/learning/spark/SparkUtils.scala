@@ -2,8 +2,10 @@ package com.learning.spark
 
 import org.apache.hadoop.mapred.InputFormat
 import org.apache.spark.SparkContext
+import org.apache.spark.broadcast.Broadcast
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.hive.HiveContext
+import org.apache.spark.util.LongAccumulator
 
 import scala.reflect.ClassTag
 
@@ -45,4 +47,11 @@ object SparkUtils {
     return new HiveContext(sparkContext)
   }
 
+  def createLongAccumulator(): LongAccumulator = {
+    return sparkContext.longAccumulator
+  }
+
+  def createBroadcast[T](values: T): Broadcast[T] = {
+    return sparkContext.broadcast(values)
+  }
 }
