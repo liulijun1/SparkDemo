@@ -51,7 +51,7 @@ object SparkUtils {
     return sparkContext.longAccumulator
   }
 
-  def createBroadcast[T](values: T): Broadcast[T] = {
+  def createBroadcast[T: ClassTag](values: T): Broadcast[T] = {
     return sparkContext.broadcast(values)
   }
 }
